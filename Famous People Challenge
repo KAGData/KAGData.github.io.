@@ -1,0 +1,141 @@
+/* Created table with singers and info */
+CREATE TABLE singers (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    age INTEGER,
+    gender TEXT);
+    
+INSERT INTO singers (id, name, age, gender)
+    VALUES (1, 'Taylor Swift', 33, 'female');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (2, 'Ariana Grande', 29, 'female');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (3, 'Lady Gaga', 37, 'female');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (4, 'Britney Spears', 41, 'female');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (5, 'Eminem', 50, 'male');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (6, 'Harry Styles', 29, 'male');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (7, 'Lewis Capaldi', 26, 'male');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (8, 'Drake', 36, 'male');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (9, 'Post Malone', 27, 'male');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (10, 'The Weeknd', 33, 'male');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (11, 'Adele', 34, 'female');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (12, 'Selena Gomez', 30, 'female');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (13, 'Justin Bieber', 29, 'male');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (14, 'Miley Cyrus', 30, 'female');
+INSERT INTO singers (id, name, age, gender)
+    VALUES (15, 'Khalid', 25, 'male');
+
+/* Viewed table*/
+
+SELECT * FROM singers; 
+
+/* Created table for genre with connected primary key to singers table */
+
+CREATE TABLE genre (
+person_id INTEGER PRIMARY KEY,
+genre TEXT);
+
+INSERT INTO genre (person_id, genre)
+    VALUES (1, 'pop');
+INSERT INTO genre (person_id, genre)
+    VALUES (2, 'pop');
+INSERT INTO genre (person_id, genre)
+    VALUES (3, 'dance pop');
+INSERT INTO genre (person_id, genre)
+    VALUES (4, 'pop');
+INSERT INTO genre (person_id, genre)
+    VALUES (5, 'rap');
+INSERT INTO genre (person_id, genre)
+    VALUES (6, 'pop');
+INSERT INTO genre (person_id, genre)
+    VALUES (7, 'pop');
+INSERT INTO genre (person_id, genre)
+    VALUES (8, 'hip hop');
+INSERT INTO genre (person_id, genre)
+    VALUES (9, 'hip hop');
+INSERT INTO genre (person_id, genre)
+    VALUES (10, 'r&b');
+INSERT INTO genre (person_id, genre)
+    VALUES (11, 'soul');
+INSERT INTO genre (person_id, genre)
+    VALUES (12, 'pop');
+INSERT INTO genre (person_id, genre)
+    VALUES (13, 'pop');
+INSERT INTO genre (person_id, genre)
+    VALUES (14, 'pop');
+INSERT INTO genre (person_id, genre)
+    VALUES (15, 'r&b');
+    
+/* Viewed genre table */
+    
+SELECT * FROM genre;
+
+/* Created list with singers id, singers names, and their genre by joining singers and genre tables */
+
+SELECT singers.id, singers.name, genre.genre
+FROM singers
+JOIN genre ON singers.id=genre.person_id
+ORDER BY genre;
+
+/* Viewed how many singers from list were in the pop genre */
+
+SELECT COUNT(genre) AS pop_count
+FROM genre
+WHERE genre = 'pop'; 
+
+/* Viewed how many singers from list were in the dance pop genre */
+
+SELECT COUNT(genre) AS dancepop_count
+FROM genre
+WHERE genre = 'dance pop';
+
+/* Viewed how many singers from list were in the rap genre */
+
+SELECT COUNT(genre) AS rap_count
+FROM genre
+WHERE genre = 'rap';
+
+/* Viewed how many singers from list were in the hip hop genre */
+
+SELECT COUNT(genre) AS hiphop_count
+FROM genre
+WHERE genre = 'hip hop';
+
+/* Viewed how many singers from list were in the r&b genre */
+
+SELECT COUNT(genre) AS randb_count
+FROM genre
+WHERE genre = 'r&b';
+
+/* Viewed how many singers from list were in the soul genre */
+
+SELECT COUNT(genre) AS soul_count
+FROM genre
+WHERE genre = 'soul';
+
+/* Learned that pop had the highest frequency */
+
+/* Viewed how many singers on list are over the age of 30 */
+
+SELECT COUNT(age) AS older_than_30
+FROM singers
+WHERE age > 30;
+
+/* Viewed how many singers on list are over the age of 30 */
+
+SELECT COUNT(age) AS younger_than_30
+FROM singers
+WHERE age < 30;
+
+/* Determined more singers were older than 30 than under 30 */
